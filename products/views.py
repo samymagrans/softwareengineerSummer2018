@@ -100,8 +100,20 @@ def product_detail_view(request, pk=None, *args, **kwargs):
 	# 	instance = qs.first()
 	# else:
 	# 	raise Http404("Product does not exist")
+	cart_obj, new_obj = Cart.objects.new_or_get(request)
 
+	print(cart_obj, new_obj)
 	context = {
-		'object': instance
+		'object': instance,
+		'cart': cart_obj,
+		'new_cart': new_cart,
+		'in_cart':False
 	}
+	if instance in cart_obj:
+		print("Exists")
+		context['in_cart'] = True
+	else:
+		print("Does Not Exist")
+		context['in_cart'] = False
+
 	return render(request, "products/detail.html", context)
