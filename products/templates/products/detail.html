@@ -96,6 +96,7 @@
 	<h3><b>{{ object.title }}</b></h3>
 	<h5><b>By {{ object.author }}</b> <br/></h5>  
 	{% if object.image %}
+<<<<<<< HEAD
 	
 
 	<img id="myImg" src='{{ object.image.url }}' alt= '{{object.title}}' class='img-fluid' style="width:100%;max-width:300px"/> <br/><br/><br/>
@@ -155,6 +156,20 @@
 			{% endif %} -->
 
 <div class="row">
+=======
+	<img src='{{ object.image.url }}' class='img-fluid' width="460" height="750"/> <br/>
+	{% endif %}
+			
+	
+</div>
+	<div class='col-sm-8'>
+	<br/><br/>{{ object.description|linebreaks }} <br/>
+	{% include 'products/snippets/update-cart.html' with product=object cart=cart %}
+	<br/>
+		<!-- test -->
+		
+		<div class="row">
+>>>>>>> cf3f1fa42fbdb97611b217391bbba9f449c17ff7
 			<div class="col-sm-6">
 				<div class="rating-block">
 					<h4>Average user rating</h4>

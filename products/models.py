@@ -33,9 +33,13 @@ class Product(models.Model):
 	price		= models.DecimalField(decimal_places=2, max_digits=10, default=100.00)
 	image		= models.ImageField(upload_to=upload_image_path, null=True, blank=True)
 	#image		= models.FileField(upload_to='products/', null=True, blank=True)
+<<<<<<< HEAD
 	amountsold	= models.IntegerField(default=0)
 
 
+=======
+	quantity 	= models.IntegerField(default=1)
+>>>>>>> cf3f1fa42fbdb97611b217391bbba9f449c17ff7
 	featured	= models.BooleanField(default=False)  # also can be Best Seller
 
 
