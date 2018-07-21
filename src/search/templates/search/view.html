@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class='row mb-3'>
+	{% if request.GET.q %}
+		<div class = 'col-12'>
+			Searched for <b>{{ request.GET.q }}</b>
+			<hr/>
+		</div>
+		{% else %}
+<<<<<<< HEAD
+
+
+		<form method='GET' action='{% url "search:query" %}' class="form-inline my-2 my-lg-0">
+			<div class='input-group col-12 col-md-8 mx-auto py-5'>
+				<input class="form-control" type="search" placeholder="Search"  name='q' aria-label="Search">
+				<span class='input-group-btn'>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</span>
+			</div>
+		</form>
+=======
+>>>>>>> 23181ea5e2a22513cfd099a19227eac9976f9e35
+		<div class='col-12'>
+			<hr>
+		</div>
+
+		{% endif %}
+<<<<<<< HEAD
+=======
+		<nav>
+		<a>Sort By:</a>
+		<a onclick="redirectTo();" name="Title">Title A-Z</a> |
+		<a onclick="redirectTo1();" name="Title">Title Z-A</a> |
+		<a onclick="redirectTo2();" name="Author">Author A-Z</a> |
+		<a onclick="redirectTo3();" name="Author">Author Z-A</a> |
+		<a onclick="redirectTo4();" name="Price">Price Low-High</a> |
+		<a onclick="redirectTo5();" name="Price">Price High-Low</a> |
+		<a onclick="redirectTo6();" name="Rating">Rating High-Low</a> |
+		<a onclick="redirectTo7();" name="Rating">Rating Low-High</a> |
+		<a onclick="redirectTo8();" name="Release Date">Realese Date</a>
+		</nav>
+		<script>
+    		function redirectTo(){
+    			updateQuery('titleASC'); 			
+    		}
+    		function redirectTo1(){
+    			updateQuery('titleDESC'); 			
+    		}
+    		function redirectTo2(){
+    			updateQuery('authorASC');
+    		}
+    		function redirectTo3(){
+    			updateQuery('authorDESC');
+    		}
+    		function redirectTo4(){
+    			updateQuery('priceLH');
+    		}
+    		function redirectTo5(){
+    			updateQuery('priceHL');
+    		}
+    		function redirectTo6(){
+    			updateQuery('rateHL');
+    		}
+    		function redirectTo7(){
+    			updateQuery('rateLH');
+    		}
+    		function redirectTo8(){
+    			updateQuery('title');
+    		}
+    		function updateQuery(value) {
+    			var url = window.location.href;
+    			var index = url.lastIndexOf('&s=');
+    			if(index != -1){
+    				var res = url.slice(0, index);
+    				window.location.href = res+"&s="+value;
+    			}
+    			else{
+    				var res = url;
+    				window.location.href = res+"&s="+value;
+    			}
+
+		    }
+
+    	</script>
+>>>>>>> 23181ea5e2a22513cfd099a19227eac9976f9e35
+	</div>
+
+	<div class='row'>
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 23181ea5e2a22513cfd099a19227eac9976f9e35
+	{% for obj in object_list %}
+	<div class='col'>
+
+		{% include 'products/snippets/card.html' with instance=obj %}
+		{% if forloop.counter|divisibleby:4 %}
+		</div> </div><div class='row'><div class='col-12'><hr/></div>
+		{% else %}
+		</div>
+		{% endif %}
+
+	{% endfor %}
+</div>
+</div>
+{% endblock %} 
