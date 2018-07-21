@@ -53,30 +53,14 @@ class Cart(models.Model):
         return str(self.id)
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> cf3f1fa42fbdb97611b217391bbba9f449c17ff7
->>>>>>> 23181ea5e2a22513cfd099a19227eac9976f9e35
 def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
     # print(action)
     if action =='post_add' or action =='post_remove'or action =='post_clear':
         products = instance.products.all()
         total = 0
         for x in products:
-<<<<<<< HEAD
             print(x.quantity)
             total += float(str(float(x.price.strip('\'')) * int(x.quantity)))
-=======
-<<<<<<< HEAD
-            total += float(x.price)
-=======
-            print(x.quantity)
-            total += float(str(float(x.price.strip('\'')) * int(x.quantity)))
->>>>>>> cf3f1fa42fbdb97611b217391bbba9f449c17ff7
->>>>>>> 23181ea5e2a22513cfd099a19227eac9976f9e35
         if instance.subtotal != total:
             instance.subtotal = total
             instance.save()
@@ -85,22 +69,9 @@ m2m_changed.connect(m2m_changed_cart_receiver, sender=Cart.products.through)
 
 
 def pre_save_cart_receiver(sender, instance, *args, **kwargs):
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    instance.total = instance.subtotal * 1.08
-
-    
-pre_save.connect(pre_save_cart_receiver, sender=Cart)
-=======
->>>>>>> 23181ea5e2a22513cfd099a19227eac9976f9e35
     instance.total = Decimal(instance.subtotal) * Decimal(1.08)
 
     
 pre_save.connect(pre_save_cart_receiver, sender=Cart)
 
 
-<<<<<<< HEAD
-=======
->>>>>>> cf3f1fa42fbdb97611b217391bbba9f449c17ff7
->>>>>>> 23181ea5e2a22513cfd099a19227eac9976f9e35
