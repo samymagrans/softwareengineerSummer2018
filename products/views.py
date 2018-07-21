@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 from .models import Product
 from carts.models import Cart
+from django.db.models import F
 
 class ProductFeaturedListView(ListView):
 	template_name = "products/list.html"
@@ -26,6 +27,24 @@ class ProductListView(ListView):
 
 	def get_queryset(self, *args, **kwargs):
 		request = self.request
+		method_dict = request.GET
+		query4 = method_dict.get('s', None)
+		if query4 is not None and query4=="titleASC":
+			return Product.objects.all().order_by(F("title").asc())
+		elif query4 is not None and query4=="titleDESC":
+			return Product.objects.all().order_by(F("title").desc())
+		elif query4 is not None and query4=="authorASC":
+			return Product.objects.all().order_by(F("author").asc())
+		elif query4 is not None and query4=="authorDESC":
+			return Product.objects.all().order_by(F("author").desc())
+		elif query4 is not None and query4=="priceLH":
+			return Product.objects.all().order_by(F("price").asc())
+		elif query4 is not None and query4=="priceHL":
+			return Product.objects.all().order_by(F("price").desc())
+		elif query4 is not None and query4=="rateHL":
+			return Product.objects.all().order_by(F("rate").asc())
+		elif query4 is not None and query4=="rateLH":
+			return Product.objects.all().order_by(F("rate").desc())
 		return Product.objects.all()
 
 	# def get_context_data(self, *args, **kwargs):

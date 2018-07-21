@@ -25,11 +25,16 @@ class ProductManager(models.Manager):
 
 class Product(models.Model):
 	title		= models.CharField(max_length=120)
+	author		= models.CharField(max_length=120, default='Unknown')
+	genre		= models.CharField(max_length=120, default='Unknown')
 	slug		= models.SlugField(blank=True, unique=True)
 	description = models.TextField()
+	rate		= models.IntegerField(default=0, max_length=5)
 	price		= models.DecimalField(decimal_places=2, max_digits=10, default=100.00)
 	image		= models.ImageField(upload_to=upload_image_path, null=True, blank=True)
 	#image		= models.FileField(upload_to='products/', null=True, blank=True)
+	amountsold	= models.IntegerField(default=0)
+
 
 	featured	= models.BooleanField(default=False)  # also can be Best Seller
 
